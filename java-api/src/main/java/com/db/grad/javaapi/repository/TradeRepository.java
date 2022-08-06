@@ -8,4 +8,6 @@ import com.db.grad.javaapi.model.Trade;
 @Repository
 public interface TradeRepository extends JpaRepository<Trade, Integer>{
 
+    Trade findTopByOrderByIdDesc();
+
 }

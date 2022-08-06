@@ -1,34 +1,34 @@
-INSERT INTO users (id, name, email, password, role) VALUES (1, 'Rishi', 'rishikaul@gmail.com', '123456', 'customer'),
-                                        (2, 'Rohit', 'rohitpai@gmail.com', '123456', 'customer'),
-                                        (3, 'Richa', 'richasingh@gmail.com', '123456', 'customer'),
-                                        (4, 'Ranveer', 'ranveer@gmail.com', '123456', 'operation'),
-                                        (5, 'Rajat', 'rajat@gmail.com', '123456', 'operation');
+INSERT INTO users (name, email, password, role) VALUES ('Rishi', 'rishikaul@gmail.com', '123456', 'customer'),
+                                        ('Rohit', 'rohitpai@gmail.com', '123456', 'customer'),
+                                        ('Richa', 'richasingh@gmail.com', '123456', 'customer'),
+                                        ('Ranveer', 'ranveer@gmail.com', '123456', 'operation'),
+                                        ('Rajat', 'rajat@gmail.com', '123456', 'operation');
 
-INSERT INTO book (id, bookName) VALUES (1, 'Government Bonds'), 
-                                    (2, 'Corporate Bonds'),
-                                    (3, 'Municipal Bonds');
+INSERT INTO book (bookname) VALUES ('Government Bonds'), 
+                                    ('Corporate Bonds'),
+                                    ('Municipal Bonds');
 
-INSERT INTO book_user (bookId, userId) VALUES (1, 1), 
+INSERT INTO book_user (bookid, userid) VALUES (1, 1), 
                                               (2, 2),
                                               (3, 3),
                                               (1, 4),
                                               (2, 5);
 
-INSERT INTO security (id, ISIN, CUSIP, issuer, maturityDate, coupon, type, faceValue, status) VALUES
-                    (1, 'AU0000XVGZA3', '987654321', 'Apple', '2004-02-01', 2.5, 'corporate', 100, 'ACTIVE' ),
-                    (2, 'BU0000YVGZB7', '876543219', 'Banana', '2007-08-21', 1.8, 'corporate', 50, 'ACTIVE' ),
-                    (3, 'CD0000GVGZA1', '765432198', 'Maharashtra Government', '2002-01-01', 0.2, 'government', 10, 'ACTIVE' ),
-                    (4, 'AU0000XVGZA3', '654321987', 'Samsung', '2005-03-31', 3, 'corporate', 100, 'ACTIVE' ),
-                    (5, 'AU0000XVGZA3', '543219876', 'BMC', '2009-05-10', 1.4, 'municipal', 250, 'ACTIVE' );
+INSERT INTO security (ISIN, CUSIP, issuer, maturitydate, coupon, type, facevalue, status) VALUES
+                    ('AU0000XVGZA3', '987654321', 'Apple', '2004-02-01', 2.5, 'corporate', 100, 'ACTIVE' ),
+                    ('BU0000YVGZB7', '876543219', 'Banana', '2007-08-21', 1.8, 'corporate', 50, 'ACTIVE' ),
+                    ('CD0000GVGZA1', '765432198', 'Maharashtra Government', '2002-01-01', 0.2, 'government', 10, 'ACTIVE' ),
+                    ('AU0000XVGZA3', '654321987', 'Samsung', '2005-03-31', 3, 'corporate', 100, 'ACTIVE' ),
+                    ('AU0000XVGZA3', '543219876', 'BMC', '2009-05-10', 1.4, 'municipal', 250, 'ACTIVE' );
 
-INSERT INTO counterparty (id, name) VALUES (1, 'Kirti'),
-                                   (2, 'Dhanshree'),
-                                   (3, 'Chandana'),
-                                   (4, 'Raunak'),
-                                   (5, 'Rishikesh');
+INSERT INTO counterparty (name) VALUES ('Kirti'),
+                                   ('Dhanshree'),
+                                   ('Chandana'),
+                                   ('Raunak'),
+                                   ('Rishikesh');
 
 -- sell -> false, buy -> true
-INSERT INTO trade (id, bookId, userId, counterpartyId, securityId, quantity, status, price, buySell, tradeDate, settlementDate) VALUES
-                    (1, 1, 3, 5, 2, 3, 'SETTLED', 270, false, '2008-11-11', '2008-11-12')
+INSERT INTO trade (bookid, userid, counterpartyid, securityid, quantity, status, price, buysell, tradedate, settlementdate) VALUES
+                    (1, 3, 5, 2, 3, 'SETTLED', 270, false, '2008-11-11', '2008-11-12')
 
                     -- https://engpermits.lacity.org/bpermits/bond_section/common/status_definitions.htm

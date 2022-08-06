@@ -2,6 +2,8 @@ package com.db.grad.javaapi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -11,36 +13,38 @@ import java.sql.Date;
 public class Trade {
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue
     private int id;
-    private int bookId;
-    private int userId;
-    private int counterpartyId;
-    private int securityId;
+    private int bookid;
+    private int userid;
+    private int counterpartyid;
+    private int securityid;
     private int quantity;
     private String status;
     private int price;
-    private boolean buySell;
-    private Date tradeDate;
-    private Date settlementDate;
+    private boolean buysell;
+    private Date tradedate;
+    private Date settlementdate;
 
     public Trade() {
 
     }
 
-    public Trade(int id, int bookId, int userId, int counterpartyId, int securityId, int quantity, String status,
-            int price, Boolean buySell, Date tradeDate,
-            Date settlementDate) {
+    public Trade(int id, int bookid, int userid, int counterpartyid, int securityid, int quantity, String status,
+            int price, Boolean buysell, Date tradedate,
+            Date settlementdate) {
         this.id = id;
-        this.bookId = bookId;
-        this.userId = userId;
-        this.counterpartyId = counterpartyId;
-        this.securityId = securityId;
+        this.bookid = bookid;
+        this.userid = userid;
+        this.counterpartyid = counterpartyid;
+        this.securityid = securityid;
         this.quantity = quantity;
         this.status = status;
         this.price = price;
-        this.buySell = buySell;
-        this.tradeDate = tradeDate;
-        this.settlementDate = settlementDate;
+        this.buysell = buysell;
+        this.tradedate = tradedate;
+        this.settlementdate = settlementdate;
 
     }
 
@@ -53,40 +57,40 @@ public class Trade {
         this.id = id;
     }
 
-    @Column(name = "bookId", nullable = false)
-    public int getBookId() {
-        return bookId;
+    @Column(name = "bookid", nullable = false)
+    public int getBookid() {
+        return bookid;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setBookid(int bookid) {
+        this.bookid = bookid;
     }
 
-    @Column(name = "userId", nullable = false)
-    public int getUserId() {
-        return userId;
+    @Column(name = "userid", nullable = false)
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    @Column(name = "counterpartyId", nullable = false)
-    public int getCounterpartyId() {
-        return counterpartyId;
+    @Column(name = "counterpartyid", nullable = false)
+    public int getCounterpartyid() {
+        return counterpartyid;
     }
 
-    public void setCounterpartyId(int counterpartyId) {
-        this.counterpartyId = counterpartyId;
+    public void setCounterpartyid(int counterpartyid) {
+        this.counterpartyid = counterpartyid;
     }
 
-    @Column(name = "securityId", nullable = false)
-    public int getSecurityId() {
-        return securityId;
+    @Column(name = "securityid", nullable = false)
+    public int getSecurityid() {
+        return securityid;
     }
 
-    public void setSecurityId(int securityId) {
-        this.securityId = securityId;
+    public void setSecurityid(int securityid) {
+        this.securityid = securityid;
     }
 
     @Column(name = "quantity", nullable = false)
@@ -116,31 +120,31 @@ public class Trade {
         this.price = price;
     }
 
-    @Column(name = "buySell", nullable = false)
-    public boolean getBuySell() {
-        return buySell;
+    @Column(name = "buysell", nullable = false)
+    public boolean getBuysell() {
+        return buysell;
     }
 
-    public void setbuySell(boolean buySell) {
-        this.buySell = buySell;
+    public void setBuysell(boolean buysell) {
+        this.buysell = buysell;
     }
 
-    @Column(name = "tradeDate", nullable = false)
-    public Date getTradeDate() {
-        return tradeDate;
+    @Column(name = "tradedate", nullable = false)
+    public Date getTradedate() {
+        return tradedate;
     }
 
-    public void setTradeDate(Date tradeDate) {
-        this.tradeDate = tradeDate;
+    public void setTradedate(Date tradedate) {
+        this.tradedate = tradedate;
     }
 
-    @Column(name = "settlementDate", nullable = false)
-    public Date getSettlementDate() {
-        return settlementDate;
+    @Column(name = "settlementdate", nullable = false)
+    public Date getSettlementdate() {
+        return settlementdate;
     }
 
-    public void setSettlementDate(Date settlementDate) {
-        this.settlementDate = settlementDate;
+    public void setSettlementdate(Date settlementdate) {
+        this.settlementdate = settlementdate;
     }
 
 }

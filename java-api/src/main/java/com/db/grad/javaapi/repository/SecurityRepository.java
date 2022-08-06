@@ -13,4 +13,6 @@ public interface SecurityRepository extends JpaRepository<Security, Integer>{
 
     List<Security> findByMaturitydateBetween(Date date1, Date date2);
 
+    Security findTopByOrderByIdDesc();
+
 }

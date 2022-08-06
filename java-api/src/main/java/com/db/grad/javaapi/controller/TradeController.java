@@ -1,5 +1,7 @@
 package com.db.grad.javaapi.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class TradeController {
     @Autowired
     private SecurityRepository securityRepository;
 
+    @GetMapping("/trade")
+    public List<Trade> getAllTrades() {
+        return tradeRepository.findAll();
+    }
+
     @GetMapping("/trade/{id}")
     public ResponseEntity<Trade> getTradeById(@PathVariable(value = "id") Integer id)
             throws ResourceNotFoundException {
@@ -41,14 +48,16 @@ public class TradeController {
     	throws ResourceNotFoundException {
     	Trade trade = tradeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
-        Security security = securityRepository.findById(trade.getSecurityId())
-                .orElseThrow(() -> new ResourceNotFoundException("Security for found for this id :: " + id));
+        Security security = securityRepository.findById(trade.getSecurityid())
+                .orElseThrow(() -> new ResourceNotFoundException("Security not for found for this id :: " + id));
         return ResponseEntity.ok().body(security);
         
     }
     
     @PostMapping("/trade")
-    public Trade createSecurity(@Valid @RequestBody Trade trade) {
+    public Trade createTrade(@Valid @RequestBody Trade trade) {
+        Trade lastTrade = tradeRepository.findTopByOrderByIdDesc();
+        trade.setId(lastTrade.getId() + 1);
         return tradeRepository.saveAndFlush(trade);
     }
     
@@ -56,22 +65,21 @@ public class TradeController {
     public ResponseEntity<Trade> updateSecurity(@PathVariable(value = "id") Integer id,
             @Valid @RequestBody Trade tradeDetails) throws ResourceNotFoundException {
         Trade trade = tradeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
 
-        trade.setId(tradeDetails.getId());
-        trade.setBookId(tradeDetails.getBookId());
-        trade.setbuySell(tradeDetails.getBuySell());
-        trade.setCounterpartyId(tradeDetails.getCounterpartyId());
+        // trade.setId(tradeDetails.getId());
+        trade.setBookid(tradeDetails.getBookid());
+        trade.setBuysell(tradeDetails.getBuysell());
+        trade.setCounterpartyid(tradeDetails.getCounterpartyid());
         trade.setPrice(tradeDetails.getPrice());
         trade.setQuantity(tradeDetails.getPrice());
-        trade.setSecurityId(trade.getSecurityId());
-        trade.setSettlementDate(tradeDetails.getSettlementDate());
+        trade.setSecurityid(trade.getSecurityid());
+        trade.setSettlementdate(tradeDetails.getSettlementdate());
         trade.setStatus(tradeDetails.getStatus());
-        trade.setTradeDate(tradeDetails.getTradeDate());
-        trade.setUserId(tradeDetails.getUserId());
+        trade.setTradedate(tradeDetails.getTradedate());
+        trade.setUserid(tradeDetails.getUserid());
 
         final Trade updatedTrade = tradeRepository.save(trade);
         return ResponseEntity.ok(updatedTrade);
     }
-
 }

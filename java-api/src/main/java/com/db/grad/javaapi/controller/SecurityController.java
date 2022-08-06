@@ -49,6 +49,8 @@ public class SecurityController {
 
     @PostMapping("/security")
     public Security createSecurity(@Valid @RequestBody Security security) {
+        Security lastSecurity = securityRepository.findTopByOrderByIdDesc();
+        security.setId(lastSecurity.getId() + 1);
         return securityRepository.saveAndFlush(security);
     }
 
@@ -58,7 +60,7 @@ public class SecurityController {
         Security security = securityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
 
-        security.setId(securityDetails.getId());
+        // security.setId(securityDetails.getId());
         security.setISIN(securityDetails.getISIN());
         security.setCUSIP(securityDetails.getCUSIP());
         security.setIssuer(securityDetails.getIssuer());
