@@ -29,8 +29,4 @@ INSERT INTO counterparty (id, name) VALUES (1, 'Kirti'),
                                    (4, 'Raunak'),
                                    (5, 'Rishikesh');
 
--- sell -> false, buy -> true
-INSERT INTO trade (id, bookId, userId, counterpartyId, securityId, quantity, status, price, buySell, tradeDate, settlementDate) VALUES
-                    (1, 1, 3, 5, 2, 3, 'SETTLED', 270, false, '2008-11-11', '2008-11-12')
-
                     -- https://engpermits.lacity.org/bpermits/bond_section/common/status_definitions.htm
