@@ -1,3 +1,5 @@
+
+
 INSERT INTO users (id, name, email, password, role) VALUES (1, 'Rishi', 'rishikaul@gmail.com', '123456', 'customer'),
                                         (2, 'Rohit', 'rohitpai@gmail.com', '123456', 'customer'),
                                         (3, 'Richa', 'richasingh@gmail.com', '123456', 'customer'),
@@ -26,9 +28,5 @@ INSERT INTO counterparty (id, name) VALUES (1, 'Kirti'),
                                    (3, 'Chandana'),
                                    (4, 'Raunak'),
                                    (5, 'Rishikesh');
-
--- sell -> false, buy -> true
-INSERT INTO trade (id, bookId, userId, counterpartyId, securityId, quantity, status, price, buySell, tradeDate, settlementDate) VALUES
-                    (1, 1, 3, 5, 2, 3, 'SETTLED', 270, false, '2008-11-11', '2008-11-12')
 
                     -- https://engpermits.lacity.org/bpermits/bond_section/common/status_definitions.htm
