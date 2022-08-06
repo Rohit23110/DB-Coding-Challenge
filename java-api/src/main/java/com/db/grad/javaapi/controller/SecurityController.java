@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db.grad.javaapi.exception.ResourceNotFoundException;
@@ -36,6 +38,12 @@ public class SecurityController {
             throws ResourceNotFoundException {
         Security security = securityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
+        return ResponseEntity.ok().body(security);
+    }
+
+    @GetMapping("/security/date-range")
+    public ResponseEntity<List<Security>> getSecurityByDateRange(@RequestParam Date date1, @RequestParam Date date2) {
+        List<Security> security = securityRepository.findByMaturitydateBetween(date1, date2);
         return ResponseEntity.ok().body(security);
     }
 

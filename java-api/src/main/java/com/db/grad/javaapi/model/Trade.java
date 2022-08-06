@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Entity
 @Table(name = "trade")
@@ -20,16 +20,16 @@ public class Trade {
     private String status;
     private int price;
     private boolean buySell;
-    private Timestamp tradeDate;
-    private Timestamp settlementDate;
+    private Date tradeDate;
+    private Date settlementDate;
 
     public Trade() {
 
     }
 
     public Trade(int id, int bookId, int userId, int counterpartyId, int securityId, int quantity, String status,
-            int price, Boolean buySell, Timestamp tradeDate,
-            Timestamp settlementDate) {
+            int price, Boolean buySell, Date tradeDate,
+            Date settlementDate) {
         this.id = id;
         this.bookId = bookId;
         this.userId = userId;
@@ -126,20 +126,20 @@ public class Trade {
     }
 
     @Column(name = "tradeDate", nullable = false)
-    public Timestamp getTradeDate() {
+    public Date getTradeDate() {
         return tradeDate;
     }
 
-    public void setTradeDate(Timestamp tradeDate) {
+    public void setTradeDate(Date tradeDate) {
         this.tradeDate = tradeDate;
     }
 
     @Column(name = "settlementDate", nullable = false)
-    public Timestamp getSettlementDate() {
+    public Date getSettlementDate() {
         return settlementDate;
     }
 
-    public void setSettlementDate(Timestamp settlementDate) {
+    public void setSettlementDate(Date settlementDate) {
         this.settlementDate = settlementDate;
     }
 

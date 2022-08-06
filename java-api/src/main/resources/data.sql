@@ -1,5 +1,3 @@
-
-
 INSERT INTO users (id, name, email, password, role) VALUES (1, 'Rishi', 'rishikaul@gmail.com', '123456', 'customer'),
                                         (2, 'Rohit', 'rohitpai@gmail.com', '123456', 'customer'),
                                         (3, 'Richa', 'richasingh@gmail.com', '123456', 'customer'),

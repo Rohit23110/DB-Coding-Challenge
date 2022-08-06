@@ -52,12 +52,13 @@
 			<version>1.6.9</version>
 		</dependency>
 
-		<!-- Extra Dependency -->
+		<!-- Devtools -->
 		<dependency>
-    		<groupId>org.javassist</groupId>
-    		<artifactId>javassist</artifactId>
-    		<version>3.25.0-GA</version>
-		</dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-devtools</artifactId>
+      		<scope>runtime</scope>
+      		<optional>true</optional>
+    	</dependency>
 
 	</dependencies>
 

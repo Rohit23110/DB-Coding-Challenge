@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Entity
 @Table(name = "security")
@@ -15,7 +15,7 @@ public class Security {
     private String ISIN;
     private String CUSIP;
     private String issuer;
-    private Timestamp maturitydate;
+    private Date maturitydate;
     private float coupon;
     private String type;
     private long facevalue;
@@ -25,7 +25,7 @@ public class Security {
 
     }
 
-    public Security(int id, String ISIN, String CUSIP, String issuer, Timestamp maturitydate,
+    public Security(int id, String ISIN, String CUSIP, String issuer, Date maturitydate,
             float coupon, String type, long facevalue, String status) {
         this.id = id;
         this.ISIN = ISIN;
@@ -75,11 +75,11 @@ public class Security {
     }
 
     @Column(name = "maturitydate", nullable = false)
-    public Timestamp getMaturitydate() {
+    public Date getMaturitydate() {
         return maturitydate;
     }
 
-    public void setMaturitydate(Timestamp maturitydate) {
+    public void setMaturitydate(Date maturitydate) {
         this.maturitydate = maturitydate;
     }
 
