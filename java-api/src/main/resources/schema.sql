@@ -21,9 +21,9 @@ CREATE TABLE book (
 CREATE TABLE book_user (
     bookid INT,
     userid INT,
-    PRIMARY KEY (bookId, userId),
-    FOREIGN KEY (bookId) REFERENCES book(id),
-    FOREIGN KEY (userId) REFERENCES users(id)
+    PRIMARY KEY (bookid, userid),
+    FOREIGN KEY (bookid) REFERENCES book(id),
+    FOREIGN KEY (userid) REFERENCES users(id)
 );
 
 CREATE TABLE security (
