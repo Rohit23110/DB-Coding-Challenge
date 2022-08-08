@@ -16,4 +16,5 @@ public interface TradeRepository extends JpaRepository<Trade, Integer>{
     @Query(value = "SELECT * FROM TRADE t LEFT JOIN BOOK b ON t.bookid = b.id WHERE b.id = ?1", nativeQuery = true)
     List<Trade> findTradesByBookid(Integer bookid);
 
+    List<Trade> findBySecurityid(Integer bookid);
 }

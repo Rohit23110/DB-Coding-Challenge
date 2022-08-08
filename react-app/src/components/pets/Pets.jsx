@@ -16,8 +16,14 @@ export const Pets = () => {
         { pets.map(pet => 
         <div className={styles.pets}>
             <div>ID: {pet.id}</div>
-            <div>Name: {pet.name} </div>
-            <div>Age: {pet.age}</div>
+            <div>Issuer: {pet.issuer} </div>
+            <div>Maturity Date: {pet.maturitydate}</div>
+            <div>Coupon: {pet.coupon}</div>
+            <div>Type: {pet.type}</div>
+            <div>Face Value: {pet.facevalue}</div>
+            <div>Status: {pet.status}</div>
+            <div>CUSIP: {pet.cusip}</div>
+            <div>ISIN: {pet.isin}</div>
         </div>) 
         }
     </>

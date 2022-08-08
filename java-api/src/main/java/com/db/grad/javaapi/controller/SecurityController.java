@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.grad.javaapi.exception.ResourceNotFoundException;
 import com.db.grad.javaapi.model.Security;
+import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.repository.SecurityRepository;
+import com.db.grad.javaapi.repository.TradeRepository;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -27,6 +29,9 @@ public class SecurityController {
 
     @Autowired
     private SecurityRepository securityRepository;
+
+    @Autowired
+    private TradeRepository tradeRepository;
 
     @GetMapping("/security")
     public List<Security> getAllSecurities() {
@@ -39,6 +44,13 @@ public class SecurityController {
         Security security = securityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
         return ResponseEntity.ok().body(security);
+    }
+
+    @GetMapping("/tradesforsecurity/{id}")
+    public ResponseEntity<List<Trade>> getTradesForSecurity(@PathVariable(value = "id") Integer id) {
+        List<Trade> trades = tradeRepository.findBySecurityid(id);
+
+        return ResponseEntity.ok().body(trades);
     }
 
     @GetMapping("/security/date-range")
