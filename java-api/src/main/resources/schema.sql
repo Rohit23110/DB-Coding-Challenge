@@ -35,7 +35,7 @@ CREATE TABLE security (
     coupon DECIMAL(4,2) NOT NULL,
     type VARCHAR(50) NOT NULL,
     facevalue INT NOT NULL,
-    status VARCHAR(6) NOT NULL
+    status VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE counterparty (

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.db.grad.javaapi.model.Security;
@@ -15,4 +16,6 @@ public interface SecurityRepository extends JpaRepository<Security, Integer>{
 
     Security findTopByOrderByIdDesc();
 
+    @Query(value = "SELECT * FROM SECURITY WHERE maturitydate < NOW()", nativeQuery = true)
+    List<Security> findSecuritiesPastMaturityDate();
 }
