@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.books-row {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.card:hover {
+  background-color: WhiteSmoke;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.navbar {
+  padding:0 10px !important;
+}

@@ -59,6 +59,12 @@ public class SecurityController {
         return ResponseEntity.ok().body(security);
     }
 
+    @GetMapping("/securitiesPastMaturityDate")
+    public ResponseEntity<List<Security>> getSecuritiesPastMaturityDate() {
+        List<Security> security = securityRepository.findSecuritiesPastMaturityDate();
+        return ResponseEntity.ok().body(security);
+    }
+
     @PostMapping("/security")
     public Security createSecurity(@Valid @RequestBody Security security) {
         Security lastSecurity = securityRepository.findTopByOrderByIdDesc();
