@@ -8,13 +8,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfigBasicAuth extends WebSecurityConfigurerAdapter{
+public class SpringSecurityConfigBasicAuth{
 	
 	@Autowired
 	UserDetailsService userDetailsService;
@@ -25,19 +26,21 @@ public class SpringSecurityConfigBasicAuth extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userDetailsService);
 	}
 	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/api/v1/user/signup");
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+    	return (web) -> web.ignoring().antMatchers("/api/v1/user/signup");
 	}
 	
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+	@Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()   
         .authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .httpBasic();
+        return http.build();
         
     }
     
