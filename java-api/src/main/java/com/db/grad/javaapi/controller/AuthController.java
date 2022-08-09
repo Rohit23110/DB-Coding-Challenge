@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.grad.javaapi.dto.LoginRequest;
 import com.db.grad.javaapi.dto.SignupRequest;
+import com.db.grad.javaapi.exception.ResourceNotFoundException;
+import com.db.grad.javaapi.exception.WrongDetailsException;
 import com.db.grad.javaapi.model.User;
 import com.db.grad.javaapi.repository.UserRepository;
 
@@ -44,15 +46,15 @@ public class AuthController {
     }
     
     @PostMapping("/auth/login")
-    public ResponseEntity<String> login(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<User> login(@Valid @RequestBody LoginRequest loginRequest) throws ResourceNotFoundException, WrongDetailsException {
     	
     	if(!userRepository.existsByEmail(loginRequest.getEmail()))
-    		return new ResponseEntity<>("No such user exists", HttpStatus.NOT_FOUND);
+    		throw new ResourceNotFoundException("No such user exists");
     	
     	User user = userRepository.findByEmail(loginRequest.getEmail());
     	if(!user.getPassword().equals(loginRequest.getPassword()))
-    		return new ResponseEntity<>("Wrong password", HttpStatus.BAD_REQUEST);
+    		throw new WrongDetailsException("Wrong password");
     	
-    	return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    	return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

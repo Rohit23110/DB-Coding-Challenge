@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import Login from './login';
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import {Form, Button, Container} from 'react-bootstrap';
 import {registerUser} from "../services/RegistrationService"
 
-function Registration() {
+function Registration(props) {
     
     const LOCAL_STORAGE_KEY = "Info";
 
@@ -31,6 +31,7 @@ function Registration() {
             alert("Complete all the fields!!!")
             return
         }
+
         registerUser(Info)
     }
 
@@ -59,12 +60,12 @@ function Registration() {
                             </div>
                             <div>
                             <Form.Label>Enter your Role</Form.Label>
-                            <Form.Control id="role" type="text" placeholder='Enter Role' className='fill' value={Info.role} onChange={(e) => setInfo({...Info, password: e.target.value})}/>
+                            <Form.Control id="role" type="text" placeholder='Enter Role' className='fill' value={Info.role} onChange={(e) => setInfo({...Info, role: e.target.value})}/>
                             </div>
                             <div>
-                                <Link to='/home'>
+                                {/* <Link to='/home'> */}
                                     <Button className="mt-3" variant="dark" type="submit">Register</Button>
-                                </Link>
+                                {/* </Link> */}
                             </div>
                             <div>
                                 <p>If Account exist then <Link to='/login'>LOGIN</Link></p>

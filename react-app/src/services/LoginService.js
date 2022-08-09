@@ -6,5 +6,6 @@ export const loginUser = async (loginDetails) => {
     `${hostNameUrl}/api/v1/auth/login`,
     loginDetails
   );
+  console.log(data);
   return { data };
 };
