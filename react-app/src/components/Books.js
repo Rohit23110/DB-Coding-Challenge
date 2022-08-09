@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import { findTradesforBook } from "../services/BookService";
 import "../App.css";
+import NavbarComp from './NavbarComp';
 
 export const Books = () => {
   const [tradeList, setTradeList] = useState([]);
@@ -28,6 +29,7 @@ export const Books = () => {
   }
   return (
     <div>
+      <NavbarComp />
       <Container>
         <p className="h3 text-left mt-3">Books</p>
         <div

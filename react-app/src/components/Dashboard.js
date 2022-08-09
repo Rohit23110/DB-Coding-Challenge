@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { Input } from "antd";
+import { findBonds } from "../services/DashboardServices";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { Link } from "react-router-dom";
 import { useTableSearch } from "../search/useTableSearch";
-import { findBondsPastMaturityDate } from "../services/MaturedBondsServices";
 import Container from "react-bootstrap/Container";
+import NavbarComp from './NavbarComp';
 
-export const MaturedBonds = () => {
+export const Dashboard = () => {
   const [searchVal, setSearchVal] = useState(null);
 
   const { filteredData } = useTableSearch({
     searchVal,
-    retrieve: findBondsPastMaturityDate,
+    retrieve: findBonds,
   });
 
   return (
+    <div>
+    <NavbarComp />
     <Container>
-      <p className="h3 text-left mt-3 mb-3">Bonds Past the Maturity Date</p>
+      <p className="h3 text-left mt-3 mb-3">All Bonds</p>
       <div
         className="d-flex justify-content-center mb-3"
         style={{
@@ -34,7 +37,6 @@ export const MaturedBonds = () => {
         onChange={(e) => setSearchVal(e.target.value)}
         placeholder="Search for Bonds"
         enterButton
-        // size="large"
         style={{ width: 300, textAlign: "center" }}
       />
       <div>
@@ -63,7 +65,7 @@ export const MaturedBonds = () => {
           </thead>
           <tbody>
             {filteredData.map((bond) => (
-              <tr style={{ cursor: "pointer" }}>
+              <tr key={bond.id} style={{ cursor: "pointer" }}>
                 <td>{bond.id}</td>
                 <td>{bond.isin} </td>
                 <td>{bond.cusip}</td>
@@ -84,5 +86,6 @@ export const MaturedBonds = () => {
         </Table>
       </div>
     </Container>
+    </div>
   );
 };

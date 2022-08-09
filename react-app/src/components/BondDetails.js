@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { findTradesforBond } from "../services/BookService";
 import Table from "react-bootstrap/Table";
+import NavbarComp from './NavbarComp';
 
 const BondDetails = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const BondDetails = () => {
 
   return (
     <>
+      <NavbarComp />
       <p className="h3 text-left mt-3">Bond Details</p>
       <Container>
         <div
