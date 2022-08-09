@@ -7,5 +7,5 @@ import com.db.grad.javaapi.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-
+	Boolean existsByEmail(String email);
 }
