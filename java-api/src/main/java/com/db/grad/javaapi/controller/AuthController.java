@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.grad.javaapi.dto.LoginRequest;
 import com.db.grad.javaapi.dto.SignupRequest;
+import com.db.grad.javaapi.exception.UserNotFoundException;
 import com.db.grad.javaapi.model.User;
 import com.db.grad.javaapi.repository.UserRepository;
 
@@ -43,16 +44,24 @@ public class AuthController {
 		return new ResponseEntity<>("New user added", HttpStatus.OK);
     }
     
-    @PostMapping("/auth/login")
-    public ResponseEntity<String> login(@Valid @RequestBody LoginRequest loginRequest) {
+    // @PostMapping("/auth/login")
+    // public ResponseEntity<String> login(@Valid @RequestBody LoginRequest loginRequest) {
     	
-    	if(!userRepository.existsByEmail(loginRequest.getEmail()))
-    		return new ResponseEntity<>("No such user exists", HttpStatus.NOT_FOUND);
+    // 	if(!userRepository.existsByEmail(loginRequest.getEmail()))
+    // 		return new ResponseEntity<>("No such user exists", HttpStatus.NOT_FOUND);
     	
-    	User user = userRepository.findByEmail(loginRequest.getEmail());
-    	if(!user.getPassword().equals(loginRequest.getPassword()))
-    		return new ResponseEntity<>("Wrong password", HttpStatus.BAD_REQUEST);
+    // 	User user = userRepository.findByEmail(loginRequest.getEmail());
+    // 	if(!user.getPassword().equals(loginRequest.getPassword()))
+    // 		return new ResponseEntity<>("Wrong password", HttpStatus.BAD_REQUEST);
     	
-    	return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    // 	return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    // }
+
+	@PostMapping("/auth/login")
+public ResponseEntity<User> saveUser(@RequestBody User userDto) {
+    if(userDto.getEmail() != null) {
+        throw new UserNotFoundException("No such user exist");
     }
+    return ResponseEntity.ok(userRepository.saveUser(userDto));
+}
 }
