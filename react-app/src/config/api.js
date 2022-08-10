@@ -1,2 +1,2 @@
-// export const hostNameUrl = "https://<PROJECT-ID>.<REGION>.r.appspot.com";
-export const hostNameUrl = "http://localhost:8080";
+export const hostNameUrl = "https://db-grads-04pt-group-14.nw.r.appspot.com";
+// export const hostNameUrl = "http://localhost:8080";
