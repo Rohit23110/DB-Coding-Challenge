@@ -1,5 +1,7 @@
 package com.db.grad.javaapi.model;
 
+import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,19 +15,19 @@ public class User {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String email;
     private String password;
     private String role;
-
+    
     public User() {
-
+    	
     }
 
-    public User(int id, String name, String email, String password, String role) {
-        this.id = id;
+    public User(String name, String email, String password, String role) {
+    	this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.name = name;
         this.email = email;
         this.password = password;
